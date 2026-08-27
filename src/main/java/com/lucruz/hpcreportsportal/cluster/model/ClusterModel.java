@@ -1,25 +1,33 @@
 package com.lucruz.hpcreportsportal.cluster.model;
 
-import com.lucruz.hpcreportsportal.responsavel.model.ResponsavelModel;
+import com.lucruz.hpcreportsportal.relatorio.model.RelatorioModel;
+import com.lucruz.hpcreportsportal.cliente.model.ClienteModel;
 import jakarta.persistence.*;
+import lombok.*;
 
-/*
-Tudo o que estiver abaixo de @Entity
-até fechar o colchetes ("}") ou atingir um ";"
-será considerado uma entidade.
-*/
+import java.util.List;
+
 @Entity
+@Table(name = "tb_cluster")
+@NoArgsConstructor
+// @AllArgsConstructor
+// @Data
+@Getter
+@Setter
 public class ClusterModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private String hostname;
 
-    // Um cluster terá um único responsável
+    // @ManyToOne - Dos muitos cluster existentes estarão associados a um único responsável
     @ManyToOne
     @JoinColumn(name = "cluster_id") // foreing key
-    private ResponsavelModel responsavel;
+    private ClienteModel cliente;
+
+    @OneToMany(mappedBy = "cluster")
+    private List<RelatorioModel> relatorios;
 
 }

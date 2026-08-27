@@ -1,4 +1,4 @@
-package com.lucruz.hpcreportsportal.responsavel.controller;
+package com.lucruz.hpcreportsportal.cliente.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping // para criar um mapa de rotas
-public class ResponsavelController {
+public class ClienteController {
 
     @GetMapping("/")
     public String paginaInicial() {
