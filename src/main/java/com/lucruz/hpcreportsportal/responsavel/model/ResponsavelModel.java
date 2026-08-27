@@ -1,6 +1,9 @@
-package com.lucruz.hpcreportsportal;
+package com.lucruz.hpcreportsportal.responsavel.model;
 
+import com.lucruz.hpcreportsportal.cluster.model.ClusterModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity // transforma uma classe em uma entidade do BD
 @Table(name = "tb_responsavel")
@@ -11,6 +14,11 @@ public class ResponsavelModel {
     private int id;
     private String nome;
     private String email;
+
+    // Um responsável pode ter vários clusters
+    @OneToMany(mappedBy = "responsavel")
+    private List<ClusterModel> clusters;
+
 
     public ResponsavelModel() {
     }
