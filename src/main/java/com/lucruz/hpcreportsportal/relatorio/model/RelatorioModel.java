@@ -1,3 +1,4 @@
+/*
 package com.lucruz.hpcreportsportal.relatorio.model;
 
 import com.lucruz.hpcreportsportal.cluster.model.ClusterModel;
@@ -28,3 +29,4 @@ public class RelatorioModel {
     private ClusterModel cluster;
 
 }
+*/

@@ -1,9 +1,6 @@
 package com.lucruz.hpcreportsportal.cliente.model;
 
 import com.lucruz.hpcreportsportal.cluster.model.ClusterModel;
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
 
 /*
@@ -11,6 +8,7 @@ Tudo o que estiver abaixo de @Entity
 até fechar o colchetes ("}") ou atingir um ";"
 será considerado uma entidade.
 */
+/*
 @Entity // transforma uma classe em uma entidade do BD
 @Table(name = "tb_cliente")
 @NoArgsConstructor // lombok cria um construtor vazio
@@ -30,4 +28,13 @@ public class ClienteModel {
     @OneToMany(mappedBy = "cliente")
     private List<ClusterModel> clusters;
 
+}
+*/
+
+public record ClienteModel(
+        Long id,
+        String nome,
+        String email,
+        List<ClusterModel> clusters
+){
 }

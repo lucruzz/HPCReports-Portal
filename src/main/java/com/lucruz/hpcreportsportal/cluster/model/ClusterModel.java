@@ -1,12 +1,6 @@
 package com.lucruz.hpcreportsportal.cluster.model;
 
-import com.lucruz.hpcreportsportal.relatorio.model.RelatorioModel;
-import com.lucruz.hpcreportsportal.cliente.model.ClienteModel;
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.List;
-
+/*
 @Entity
 @Table(name = "tb_cluster")
 @NoArgsConstructor
@@ -24,10 +18,19 @@ public class ClusterModel {
 
     // @ManyToOne - Dos muitos cluster existentes estarão associados a um único responsável
     @ManyToOne
+    // Na tabela "tb_cluster", existe uma coluna chamada "cliente_id" que referencia o
+    // cliente deste cluster
     @JoinColumn(name = "cluster_id") // foreing key
     private ClienteModel cliente;
 
     @OneToMany(mappedBy = "cluster")
     private List<RelatorioModel> relatorios;
 
+}
+*/
+public record ClusterModel(
+        Long id,
+        String nome,
+        String hostname
+){
 }
