@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping // para criar um mapa de rotas
-public class Controller {
+public class ResponsavelController {
 
     @GetMapping("/")
     public String paginaInicial() {
