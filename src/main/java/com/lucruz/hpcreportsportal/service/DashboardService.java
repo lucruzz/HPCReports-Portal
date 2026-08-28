@@ -1,15 +1,15 @@
-package com.lucruz.hpcreportsportal.cliente.service;
+package com.lucruz.hpcreportsportal.service;
 
-import com.lucruz.hpcreportsportal.cliente.model.ClienteModel;
-import com.lucruz.hpcreportsportal.cluster.model.ClusterModel;
+import com.lucruz.hpcreportsportal.model.ClienteModel;
+import com.lucruz.hpcreportsportal.model.ClusterModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClienteService {
+public class DashboardService {
 
-    public List<ClienteModel> listarClientes() {
+    public List<ClienteModel> mostrarInformacoes() {
 
         ClusterModel cluster1 = new ClusterModel(
                 1L,
@@ -18,14 +18,14 @@ public class ClienteService {
         );
         ClusterModel cluster2 = new ClusterModel(
                 2L,
-                "Apollo",
-                "apollo.alfa.interno"
+                "Zeus",
+                "zeus.alfa.interno"
         );
 
         ClusterModel cluster3 = new ClusterModel(
                 3L,
-                "Coaraci",
-                "coaraci.beta.interno"
+                "Apollo",
+                "apollo.beta.interno"
         );
 
         List<ClusterModel> list1 = List.of(cluster1, cluster2);
