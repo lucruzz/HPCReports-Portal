@@ -3,46 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Clientes</title>
+        <title>HPC Reports</title>
     </head>
     <body>
         <main>
-            <h1>Clientes atendidos</h1>
+            <header>
+                <p>HPC Reports</p>
+                <h1>Relatórios dos clusters</h1>
+                <p>Consulte a disponibilidade dos relatórios de utilização.</p>
+            </header>
 
-            <section th:each="cliente : ${clientes}">
-                <h2 th:text="${cliente.nome}">
-                    Nome do cliente
-                </h2>
-
-                <p>
-                    E-mail:
-                    <span th:text="${cliente.email}">
-                        email@exemplo.com
-                    </span>
-                </p>
-
-                <h3>Clusters</h3>
-
-                <ul>
-                    <li th:each="cluster : ${cliente.clusters}">
-                        <strong th:text="${cluster.nome}">
-                            Nome do cluster
-                        </strong>
-
-                        <span>
-                            —
-                            <span th:text="${cluster.hostname}">
-                                hostname
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-
-                <p th:if="${#lists.isEmpty(cliente.clusters)}">
-                    Este cliente não possui clusters cadastrados.
-                </p>
-
-                <hr>
+            <section>
+                <table>
+                    <!-- <caption>Clusters</caption> -->
+                    <thead>
+                        <tr>
+                            <th>Cluster</th>
+                            <th>Disponível</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <th:block th:each="cliente : ${clientes}">
+                            <!-- <tr>
+                                <td th:text="${cliente.nome}">Nome do cliente</td>
+                            </tr>
+                            -->
+                            <tr th:each="cluster : ${cliente.clusters}">
+                                <td th:text="${cluster.nome}">Nome do cluster</td>
+                                <td th:text="${cluster.relatorio.disponivel}">Não verificado</td>
+                                <td>
+                                    <button>
+                                        Verificar
+                                    </button>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                </table>
             </section>
         </main>
     </body>
