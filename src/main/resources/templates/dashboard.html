@@ -19,7 +19,7 @@
                     <thead>
                         <tr>
                             <th>Cluster</th>
-                            <th>Disponível</th>
+                            <th>Status</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -31,7 +31,7 @@
                             -->
                             <tr th:each="cluster : ${cliente.clusters}">
                                 <td th:text="${cluster.nome}">Nome do cluster</td>
-                                <td th:text="${cluster.relatorio.disponivel}">Não verificado</td>
+                                <td th:text="${cluster.relatorio.status}">Não verificado</td>
                                 <td>
                                     <button>
                                         Verificar
