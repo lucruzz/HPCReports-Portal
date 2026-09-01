@@ -18,7 +18,8 @@ public class DashboardController {
     public String mostrarDashboard(Model model) {
         model.addAttribute(
                 "clientes",
-                dashboardService.mostrarInformacoes()
+                // dashboardService.mostrarInformacoes()
+                dashboardService.lerJson()
         );
         return "dashboard";
     }

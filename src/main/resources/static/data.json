@@ -1,0 +1,44 @@
+[
+  {
+    "nome": "Instituto Alfa",
+    "email": "suporte@alfa.com",
+    "clusters": [
+      {
+        "id": null,
+        "nome": "Kronos",
+        "hostname": "kronos.alfa.interno",
+        "ip": "172.0.0.1"
+      },
+      {
+        "id": null,
+        "nome": "Zeus",
+        "hostname": "zeus.alfa.interno",
+        "ip": "172.0.0.2"
+      }
+    ]
+  },
+  {
+    "nome": "Instituto Beta",
+    "email": "suporte@beta.com",
+    "clusters": [
+      {
+        "id": null,
+        "nome": "Apollo",
+        "hostname": "apollo.beta.interno",
+        "ip": "172.0.1.10"
+      }
+    ]
+  },
+  {
+    "nome": "Instituto Gamma",
+    "email": "suporte@gamma.com",
+    "clusters": [
+      {
+        "id": null,
+        "nome": "Dionísio",
+        "hostname": "dionisio.gama.interno",
+        "ip": "172.0.1.5"
+      }
+    ]
+  }
+]
