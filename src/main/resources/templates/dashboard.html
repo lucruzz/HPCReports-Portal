@@ -33,9 +33,12 @@
                                 <td th:text="${cluster.nome}">Nome do cluster</td>
                                 <td th:text="${cluster.relatorio.status}">Não verificado</td>
                                 <td>
-                                    <button>
-                                        Verificar
-                                    </button>
+                                    <form th:action="@{/clusters/{id}/relatorio/verificar(id=${cluster.id})}" method="post">
+                                        <button type="submit">
+                                            Verificar
+                                        </button>
+                                    </form>
+
                                 </td>
                             </tr>
                         </th:block>

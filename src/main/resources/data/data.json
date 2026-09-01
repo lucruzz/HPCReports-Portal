@@ -4,13 +4,13 @@
     "email": "suporte@alfa.com",
     "clusters": [
       {
-        "id": null,
+        "id": 1,
         "nome": "Kronos",
         "hostname": "kronos.alfa.interno",
         "ip": "172.0.0.1"
       },
       {
-        "id": null,
+        "id": 2,
         "nome": "Zeus",
         "hostname": "zeus.alfa.interno",
         "ip": "172.0.0.2"
@@ -22,7 +22,7 @@
     "email": "suporte@beta.com",
     "clusters": [
       {
-        "id": null,
+        "id": 3,
         "nome": "Apollo",
         "hostname": "apollo.beta.interno",
         "ip": "172.0.1.10"
@@ -34,7 +34,7 @@
     "email": "suporte@gamma.com",
     "clusters": [
       {
-        "id": null,
+        "id": 4,
         "nome": "Dionísio",
         "hostname": "dionisio.gama.interno",
         "ip": "172.0.1.5"

@@ -1,11 +1,17 @@
 package com.lucruz.hpcreportsportal.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
-public record ClienteModel(
-        Long id,
-        String nome,
-        String email,
-        List<ClusterModel> clusters
-){
+@Getter
+@Setter
+public class ClienteModel {
+
+    private Long id;
+    private String nome;
+    private String email;
+    private List<ClusterModel> clusters;
+
 }
