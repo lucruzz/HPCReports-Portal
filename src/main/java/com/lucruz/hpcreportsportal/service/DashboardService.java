@@ -19,12 +19,14 @@ import java.util.List;
 public class DashboardService {
 
     private final ObjectMapper objectMapper;
-    private final List<ClienteModel> clientes;
+    private List<ClienteModel> clientes;
     private final SSHChecker sshChecker;
 
-    public DashboardService(ObjectMapper objectMapper, SSHChecker sshChecker) {
+    public DashboardService(ObjectMapper objectMapper,
+                            SSHChecker sshChecker
+    ) {
         this.objectMapper = objectMapper;
-        this.clientes = lerJson();
+        this.clientes = orquestradorDeClientes();
         this.sshChecker = sshChecker;
     }
 
@@ -47,18 +49,33 @@ public class DashboardService {
 
         File arquivoJson = new File("./src/main/resources/data/data.json");
 
-        List<ClienteModel> jsonArray = objectMapper.readValue(
+        return objectMapper.readValue(
                 arquivoJson,
                 new TypeReference<List<ClienteModel>>() {
                 }
         );
 
-        for (ClienteModel cliente : jsonArray) {
+    }
+
+    public List<ClienteModel> orquestradorDeClientes() {
+
+        this.clientes = lerJson();
+
+        atualizarStatusRelatorio();
+
+        return this.clientes;
+    }
+
+    public void atualizarStatusRelatorio() {
+
+        Long counterID = 0L;
+        for (ClienteModel cliente : this.clientes) {
             for (ClusterModel cluster : cliente.getClusters()) {
+                cluster.setId(counterID++);
                 cluster.criarRelatorio();
+                // verificarRelatorio(cluster.getId());
             }
         }
-        return jsonArray;
     }
 
     public void verificarRelatorio(Long id) {

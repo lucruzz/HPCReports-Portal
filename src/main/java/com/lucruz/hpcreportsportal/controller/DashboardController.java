@@ -27,6 +27,7 @@ public class DashboardController {
                 "clientes",
                 // dashboardService.mostrarInformacoes()
                 dashboardService.getClientes()
+                // dashboardService.orquestradorDeClientes()
         );
         return "dashboard";
     }
