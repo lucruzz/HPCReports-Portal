@@ -4,14 +4,23 @@ import com.lucruz.hpcreportsportal.model.RelatorioStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 @Component
 public class SSHChecker {
 
-    public RelatorioStatus verificar (String IP){
+    public RelatorioStatus verificar (String IP, String clustername){
 
         String destinoSSH = "root@" + IP;
+        String inicio = this.montaDataInicio();
+        String fim = this.montaDataFim();
+        String nomeRelatorio = clustername + "_" + inicio + "_" + fim + ".tar.gz";
+
+        String documentoPDF = "/tmp/root/" + nomeRelatorio;
+
+        IO.println(documentoPDF);
 
         ProcessBuilder processBuilder = new ProcessBuilder(
                 "ssh",
@@ -20,8 +29,8 @@ public class SSHChecker {
                 "-o", "StrictHostKeyChecking=yes",
                 destinoSSH,
                 "test",
-                "-d",
-                "/tmp/root"
+                "-f",
+                documentoPDF
 
         );
 
@@ -54,5 +63,25 @@ public class SSHChecker {
             Thread.currentThread().interrupt();
             return RelatorioStatus.ERRO_CONEXAO;
         }
+    }
+
+    public String montaDataInicio() {
+        // pego a data atual e subtraio um mês
+        LocalDate dataMesAnterior = LocalDate.now().minusMonths(1).withDayOfMonth(1);
+
+        // defino o formato desejado (DD-MM-YYYY)
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        return dataMesAnterior.format(formatador);
+    }
+
+    public String montaDataFim() {
+        // pego a data atual e defino o dia 1 do mês corrente
+        LocalDate primeiroDia = LocalDate.now().withDayOfMonth(1);
+
+        // defino o formato desejado (DD-MM-YYYY)
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        return primeiroDia.format(formatador);
     }
 }

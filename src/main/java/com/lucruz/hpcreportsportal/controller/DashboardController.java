@@ -1,6 +1,5 @@
 package com.lucruz.hpcreportsportal.controller;
 
-import com.lucruz.hpcreportsportal.integration.ssh.SSHChecker;
 import com.lucruz.hpcreportsportal.service.DashboardService;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,13 +23,9 @@ public class DashboardController {
     @GetMapping("/")
     public String mostrarDashboard(Model model) {
 
-
-
         model.addAttribute(
                 "clientes",
-                // dashboardService.mostrarInformacoes()
-                dashboardService.getClientes()
-                // dashboardService.orquestradorDeClientes()
+                dashboardService.listarClientes()
         );
         return "dashboard";
     }

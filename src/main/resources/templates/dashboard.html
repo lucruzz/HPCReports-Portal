@@ -20,7 +20,8 @@
                         <tr>
                             <th>Cluster</th>
                             <th>Status</th>
-                            <th>Ação</th>
+                            <th>Ações</th>
+                            <!-- <th>Tipo</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -32,14 +33,28 @@
                             <tr th:each="cluster : ${cliente.clusters}">
                                 <td th:text="${cluster.nome}">Nome do cluster</td>
                                 <td th:text="${cluster.relatorio.status}">Não verificado</td>
-                                <td>
+                                <td style="display: flex; gap: 8px;">
                                     <form th:action="@{/clusters/{id}/relatorio/verificar(id=${cluster.id})}" method="post">
                                         <button type="submit">
                                             Verificar
                                         </button>
                                     </form>
 
+                                    <form th:action="@{/clusters/{id}/relatorio/baixar(id=${cluster.id})}" method="post">
+                                        <button type="submit">
+                                            Baixar
+                                        </button>
+                                    </form>
+
                                 </td>
+                                <!-- <td>
+                                    <select>
+                                        <option>Mensal</option>
+                                        <option>1ª quinzena</option>
+                                        <option>2ª quinzena</option>
+                                    </select>
+                                </td>
+                                -->
                             </tr>
                         </th:block>
                     </tbody>

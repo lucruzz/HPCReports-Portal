@@ -27,7 +27,9 @@ public class DashboardService {
     ) {
         this.objectMapper = objectMapper;
         this.sshChecker = sshChecker;
-        this.clientes = orquestradorDeClientes();
+        this.clientes = lerJson();
+
+        atualizarStatusRelatorio();
     }
 
     public void imprimirListaCliente(List<ClienteModel> jsonArray){
@@ -45,6 +47,10 @@ public class DashboardService {
         }
     }
 
+    public List<ClienteModel> listarClientes() {
+        return clientes;
+    }
+
     public List<ClienteModel> lerJson() {
 
         File arquivoJson = new File("./src/main/resources/data/data.json");
@@ -55,15 +61,6 @@ public class DashboardService {
                 }
         );
 
-    }
-
-    public List<ClienteModel> orquestradorDeClientes() {
-
-        this.clientes = lerJson();
-
-        atualizarStatusRelatorio();
-
-        return this.clientes;
     }
 
     public void atualizarStatusRelatorio() {
@@ -83,7 +80,7 @@ public class DashboardService {
         if ( cluster == null ) {
             throw new IllegalArgumentException("Cluster não encontrado: " + id);
         } else {
-            RelatorioStatus resultado = sshChecker.verificar(cluster.getIp());
+            RelatorioStatus resultado = sshChecker.verificar(cluster.getIp(), cluster.getNome());
             cluster.getRelatorio().setStatus(resultado);
         }
     }
