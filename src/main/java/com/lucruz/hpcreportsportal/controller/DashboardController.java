@@ -23,6 +23,9 @@ public class DashboardController {
 
     @GetMapping("/")
     public String mostrarDashboard(Model model) {
+
+
+
         model.addAttribute(
                 "clientes",
                 // dashboardService.mostrarInformacoes()

@@ -26,8 +26,8 @@ public class DashboardService {
                             SSHChecker sshChecker
     ) {
         this.objectMapper = objectMapper;
-        this.clientes = orquestradorDeClientes();
         this.sshChecker = sshChecker;
+        this.clientes = orquestradorDeClientes();
     }
 
     public void imprimirListaCliente(List<ClienteModel> jsonArray){
@@ -73,7 +73,7 @@ public class DashboardService {
             for (ClusterModel cluster : cliente.getClusters()) {
                 cluster.setId(counterID++);
                 cluster.criarRelatorio();
-                // verificarRelatorio(cluster.getId());
+                verificarRelatorio(cluster.getId());
             }
         }
     }
